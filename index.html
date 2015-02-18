@@ -33,6 +33,8 @@
         <link rel="import" href="bower_components/paper-input/paper-input-decorator.html">
         <link rel="import" href="bower_components/paper-toast/paper-toast.html">
 
+        
+        <link rel="stylesheet" href="css/common.css">
         <!--       Stylesheet-->
         <link rel="stylesheet" href="css/common.css">
          <!--Legacy Browser Check-->
@@ -47,59 +49,32 @@
         catch(e){window.attachEvent("onload", $buo_f)}
         </script> 
 <!--        Title-->
-        <title>ResumeUtil</title>
+        <title>BullshITBankDB</title>
         
     </head>
     <body onload="loginCheckLoginpage()" fullbleed layout vertical>
-          <core-header-panel flex>
+          <core-header-panel mode="cover" flex>
            
-  <core-toolbar>
-      <a href="index.html"><paper-icon-button icon="arrow-back"></paper-icon-button></a>
-      <div>로그인</div>
+  <core-toolbar class="tall">
+      <div>BullshITBankDB</div>
+    
            </core-toolbar>
-  <div align="center" class="content-area">
-           
-        <paper-shadow z="1" class="usercard">
-               <core-icon icon="account-circle"></core-icon>
-                <h1>로그인</h1>
-                <paper-input-decorator label="사용자 계정이름(ID) 입력">
-                    <input id="username" type="text">
-                </paper-input-decorator>
-                <paper-input-decorator label="비밀번호 입력">
-                    <input id="password" type="password">
-                </paper-input-decorator>
-               
-               <paper-button raised style="background: green; color:white;" onclick="loginTask()">
-               <core-icon icon="lock-open"></core-icon>로그인</paper-button>
-            </paper-shadow><br>
-           
-           <paper-shadow z="1" class="usercard">
-               <core-icon icon="error"></core-icon>
-                <h1>비밀번호 찾기</h1>
-                <paper-input-decorator label="가입시 입력한 이메일 주소 입력">
-                    <input id="passwordreset" type="text">
-                </paper-input-decorator>
-               
-               <paper-button raised style="background: green; color:white;" onclick="resetPasswordTask()">
-               <core-icon icon="find-replace"></core-icon>비밀번호 찾기</paper-button>
-            </paper-shadow><br>
-           
-           <paper-shadow z="1" class="usercard">
-               <core-icon icon="add-circle"></core-icon>
-                <h1>새 계정 만들기</h1>
-                <paper-input-decorator label="사용할 사용자 계정이름(ID) 입력">
-                    <input id="newusername" type="text">
-                </paper-input-decorator>
-               <paper-input-decorator label="비밀번호 입력">
-                    <input id="newpassword" type="password">
-                </paper-input-decorator>
-               <paper-input-decorator label="이메일 주소 입력">
-                    <input id="newemail" type="text">
-                </paper-input-decorator>
-               
-               <paper-button raised style="background: green; color:white;" onclick="newUserTask()">
-               <core-icon icon="create"></core-icon>새로 계정 생성하기</paper-button>
-            </paper-shadow>
+              
+  <div align="center" class="content">
+  <paper-shadow z=1 class="card">
+      <p>더이상 망할 BullshITBank(Bullshit + ITBank) 의 텔레마케팅에 시달리지 마세요. BullshITBankDB 는 여러분들이 힘을 합쳐 BullshITBank 를 몰아낼 수 있도록 도와드립니다.</p><br>
+      <core-icon icon="search"></core-icon>번호 조희
+            <paper-input-decorator label="BullshITBankDB.isBullshITBank(int number);">
+                <input type="text">
+            </paper-input-decorator><br>
+            
+       <core-icon icon="add-circle"></core-icon>번호 추가
+            <paper-input-decorator label="BullshITBankDB.addNewBullshITBank(int number);">
+                <input type="text">
+            </paper-input-decorator>
+        </paper-shadow>
+        
+         
         </div>
 </core-header-panel>
         <paper-toast id="toast"></paper-toast>
