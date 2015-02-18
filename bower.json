@@ -1,0 +1,16 @@
+{
+  "name": "BullshITBankDB",
+  "version": "0.0.1",
+  "authors": [
+    "Youngbin Han <sukso96100@gmail.com>"
+  ],
+  "description": "Website source for BullshITBankDB",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
