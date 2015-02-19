@@ -2,7 +2,7 @@ var userip;
 
 function searchBullshIT(){
     if (event.keyCode == 13){
-        var input = document.getElementById("findnum").value;
+        var input = document.getElementById("findnum").value.toString();
         console.log(input)
     var BullshITBankDB = Parse.Object.extend("BullshITBankDB");
     var query = new BullshITBankDB();
@@ -30,9 +30,11 @@ function addBullshIT(){
          console.log(userip)
         var BullshITBankDB = Parse.Object.extend("BullshITBankDB");
         var bullshITBankDB = new BullshITBankDB();
-        bullshITBankDB.set("phone",parseInt(input))
+        bullshITBankDB.set("phone",input.toString())
         bullshITBankDB.set("submitterip",userip)
-        bullshITBankDB.save();
+        bullshITBankDB.save().then(function(object) {
+            showToast("입력하신 번호가 저장되었습니다. : "+input.toString());
+    });
         }
 }
 
