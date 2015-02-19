@@ -16,22 +16,15 @@
 
         
 <!--        Parse JS SDK-->
-<!--
         <script src="http://www.parsecdn.com/js/parse-1.3.0.min.js"></script>
         <script src="js/initparse.js"></script>
-        <script src="js/user.js"></script>
+        <script src="js/main.js"></script>
+        <script type="text/javascript" src="http://l2.io/ip.js?var=userip"></script>
         <script src="js/toast.js"></script>
--->
         
 <!--        HTML Imports-->
-        <link rel="import" href="bower_components/core-header-panel/core-header-panel.html">
-        <link rel="import" href="bower_components/core-toolbar/core-toolbar.html">
-        <link rel="import" href="bower_components/paper-icon-button/paper-icon-button.html">
-        <link rel="import" href="bower_components/core-icon/core-icon.html">
-        <link rel="import" href="bower_components/paper-shadow/paper-shadow.html">
-        <link rel="import" href="bower_components/paper-button/paper-button.html">
-        <link rel="import" href="bower_components/paper-input/paper-input-decorator.html">
-        <link rel="import" href="bower_components/paper-toast/paper-toast.html">
+        <link rel="import" href="bower_components/core-elements/core-elements.html">
+        <link rel="import" href="bower_components/paper-elements/paper-elements.html">      
 
         
         <link rel="stylesheet" href="css/common.css">
@@ -52,7 +45,7 @@
         <title>BullshITBankDB</title>
         
     </head>
-    <body onload="loginCheckLoginpage()" fullbleed layout vertical>
+    <body fullbleed layout vertical>
           <core-header-panel mode="cover" flex>
            
   <core-toolbar class="tall">
@@ -65,18 +58,24 @@
       <p>더이상 망할 BullshITBank(Bullshit + ITBank) 의 텔레마케팅에 시달리지 마세요. BullshITBankDB 는 여러분들이 힘을 합쳐 BullshITBank 를 몰아낼 수 있도록 도와드립니다.</p><br>
       <core-icon icon="search"></core-icon>번호 조희
             <paper-input-decorator label="BullshITBankDB.isBullshITBank(int number);">
-                <input type="text">
+                <input type="number" id="findnum">
             </paper-input-decorator><br>
             
        <core-icon icon="add-circle"></core-icon>번호 추가
             <paper-input-decorator label="BullshITBankDB.addNewBullshITBank(int number);">
-                <input type="text">
+                <input type="number" id="newnum" onkeypress="addBullshIT()">
             </paper-input-decorator>
         </paper-shadow><br>
       <paper-shadow z=1 class="card">
-    
+        <section id="results">
+          </section>
         </paper-shadow>
-        
+        <paper-shadow z=1 class="card">
+            <core-collapse>
+                 <section id="details">
+          </section>
+            </core-collapse>
+        </paper-shadow>
          
         </div>
 </core-header-panel>
