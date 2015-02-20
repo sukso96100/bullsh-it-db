@@ -21,7 +21,6 @@
         <script src="js/initparse.js"></script>
         <script src="js/main.js"></script>
         <script src="js/detail.js"></script>
-        <script type="text/javascript" src="http://l2.io/ip.js?var=userip"></script>
         <script src="js/toast.js"></script>
         
 <!--        HTML Imports-->
@@ -54,7 +53,7 @@
            </core-toolbar>
              <section>
   <div align="center" class="main-area">
-       <p>다같이 BullshITBank = null 또는 ITBank = null 이 되도록 힘을 모아봅시다.</p><br>
+       <p>다같이 (BullshITBank == null || ITBank = null) 이 true 가 되도록 힘을 모아봅시다.</p><br>
       <core-icon icon="search"></core-icon>번호 검색
             <paper-input-decorator label="BullshITBankDB.isBullshITBank(int number);">
                 <input type="number" id="findnum" onkeypress="searchBullshIT()">
@@ -81,8 +80,12 @@
                 <core-tooltip label="COUNT" position="right" show large id="bullshitcount">
                 <paper-button style="background: black; color: white;" 
                               id="bullshitbtn" onclick="updateCount()">isBullshITBank()==true</paper-button>
-                </core-tooltip>
+                </core-tooltip><br><br>
+                <h3>댓글</h3>
                 <section id="comments"></section>
+                <paper-input-decorator label="댓글 입력">
+                <input type="text" id="comment-input" onkeypress="updateComments()">
+            </paper-input-decorator><br>
             </core-collapse>
         </paper-shadow>
               </section>

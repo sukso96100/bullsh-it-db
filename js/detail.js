@@ -11,6 +11,8 @@ function showDetail(element){
                         document.getElementById("details-number").innerHTML = number;
                         document.getElementById("submitter-guid").innerHTML = "등룩한 사람 : " + results.get("submitterguid");
                         document.getElementById("bullshitcount").label = results.get("bullshitcount").length;
+                    loadComments()
+                    setBullshitBtnState()
               },
                 error: function(error) {
                     showToast("번호가 없습니다.")
@@ -26,6 +28,7 @@ function toggleDetails(boolean){
 }
 
 function updateCount(){
+    
     var number = document.getElementById("details-number").innerHTML;
     
     var BullshITBankDB = Parse.Object.extend("BullshITBankDB");
@@ -60,19 +63,93 @@ function updateCount(){
                             });
               },
                 error: function(error) {
-                    showToast("번호가 없습니다.")
                     //Data Not Exist
 //                     document.getElementById('statemsg').innerHTML = "";
                         }
                     });
+    
 }
 
-function updateComment(){
+function updateComments(){
+    if (event.keyCode == 13){
+      loadComments()
+        }
 }
 
-//function searchStringInArray (str, strArray) {
-//    for (var j=0; j<strArray.length; j++) {
-//        if (strArray[j].match(str)) return j;
-//    }
-//    return -1;
-//}
+function loadComments(){
+ var newcomment = document.getElementById("comment-input").value;
+    var number = document.getElementById("details-number").innerHTML;
+    var BullshITBankDB = Parse.Object.extend("BullshITBankDB");
+        var query = new Parse.Query(BullshITBankDB);
+            query.equalTo("phone", number);
+            query.first({
+                success: function(results) {
+                    toggleDetails(true)
+                    
+                        var array = results.get("comments")
+                        if(array == null || array == undefined){
+                            array = new Array();
+                        }
+                        if(newcomment == "" || (newcomment == null || newcomment == undefined)){}else{
+                            array.push(newcomment+"["+guid+"]");
+                        }
+                        results.set("comments",array)
+                        results.save(null, {
+                        success: function(userIntroData) {  
+                            },
+                        error: function(userIntroData, error) {
+                              }
+                            });
+                        
+                        document.getElementById("comments").innerHTML="";
+                        for(var i=0; i<array.length; i++){
+                            var element = "<p>"+array[i]+"</p><br>";
+                            $('#comments').append(element);
+                        }
+                        
+              },
+                error: function(error) {
+                    //Data Not Exist
+//                     document.getElementById('statemsg').innerHTML = "";
+                        }
+                    });}
+
+
+function setBullshitBtnState(){
+    
+    var number = document.getElementById("details-number").innerHTML;
+    
+    var BullshITBankDB = Parse.Object.extend("BullshITBankDB");
+        var query = new Parse.Query(BullshITBankDB);
+            query.equalTo("phone", number);
+            query.first({
+                success: function(results) {
+                    toggleDetails(true)
+                    
+                        var array = results.get("bullshitcount")
+                        if(array == undefined || array == null){
+                            console.log("Bullshitcount is null")
+                            array = new Array();
+                        }
+                        var index = array.indexOf(guid);
+                        if (index > -1) {
+                            document.getElementById("bullshitbtn").style.background = "red";
+                            }else{
+                            document.getElementById("bullshitbtn").style.background = "black";
+                            }
+                    document.getElementById("bullshitcount").label = array.length;
+                        results.set("bullshitcount",array)
+                        results.save(null, {
+                        success: function(userIntroData) {  
+                            },
+                        error: function(userIntroData, error) {
+                              }
+                            });
+              },
+                error: function(error) {
+                    //Data Not Exist
+//                     document.getElementById('statemsg').innerHTML = "";
+                        }
+                    });
+    
+}
