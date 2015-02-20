@@ -3,9 +3,9 @@ var guid = null;
 function setupGuid(){
     guid = getCookie('guid');
 if(guid==""||guid == null){
-    guid = createGuid()
-    setCookie('guid',guid,3650)
-    console.log(guid)
+    guid = createGuid();
+    setCookie('guid',guid,3650);
+    console.log(guid);
 }else{
     console.log(guid)
 }
