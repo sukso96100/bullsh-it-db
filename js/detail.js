@@ -1,24 +1,19 @@
-function showDetail(element){
-        var number = element.id
-        console.log(number)
-        var BullshITBankDB = Parse.Object.extend("BullshITBankDB");
-        var query = new Parse.Query(BullshITBankDB);
+function showDetail(element) {
+            var number = element.id;
+            console.log(number)
+            var BullshITBankDB = Parse.Object.extend("BullshITBankDB");
+            var query = new Parse.Query(BullshITBankDB);
             query.equalTo("phone", number);
             query.first({
                 success: function(results) {
-                    toggleDetails(true)
-                    
+                        toggleDetails(true)
                         document.getElementById("details-number").innerHTML = number;
                         document.getElementById("submitter-guid").innerHTML = "등룩한 사람 : " + results.get("submitterguid");
                         document.getElementById("bullshitcount").label = results.get("bullshitcount").length;
-                    loadComments()
-                    setBullshitBtnState()
+                        loadComments()
+                        setBullshitBtnState()
               },
-                error: function(error) {
-                    showToast("번호가 없습니다.")
-                    //Data Not Exist
-//                     document.getElementById('statemsg').innerHTML = "";
-                        }
+                error: function(error) {}
                     });
 }
 
@@ -113,7 +108,8 @@ function loadComments(){
                     //Data Not Exist
 //                     document.getElementById('statemsg').innerHTML = "";
                         }
-                    });}
+                    });
+}
 
 
 function setBullshitBtnState(){
@@ -154,6 +150,6 @@ function setBullshitBtnState(){
                     });
     
 }
-$("#comment-input").submit(function(){
-      loadComments()
-}
+//$("#comment-input").submit(function(){
+//      loadComments()
+//}
