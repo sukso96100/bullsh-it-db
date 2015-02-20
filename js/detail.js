@@ -42,7 +42,7 @@ function updateCount(){
                         var array = results.get("bullshitcount")
                         if(array == null){
                             console.log("Bullshitcount is null")
-                            array = new Array();
+                            array = new Array()
                         }
                         var index = array.indexOf(guid);
                         if (index > -1) {
