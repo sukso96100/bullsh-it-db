@@ -1,4 +1,4 @@
-function addBullshITTask(){
+function addBullshITtask(){
       var input = document.getElementById("newnum").value;
         console.log(input)
          console.log(guid)
