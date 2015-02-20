@@ -2,7 +2,7 @@ var guid = null;
 
 function setupGuid(){
     guid = getCookie('guid');
-if(guid == undefined || guid == null){
+if(guid == undefined || guid.equals("")){
     guid = createGuid()
     setCookie('guid',guid,3650)
     console.log(guid)
