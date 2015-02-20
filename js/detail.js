@@ -154,3 +154,6 @@ function setBullshitBtnState(){
                     });
     
 }
+$("#comment-input").submit(function(){
+      loadComments()
+}

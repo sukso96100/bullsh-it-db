@@ -62,20 +62,21 @@
              <section>
   <div align="center" class="main-area">
        <p>다같이 (BullshITBank == null || ITBank = null) 이 true 가 되도록 힘을 모아봅시다.</p><br>
-      <core-icon icon="search"></core-icon>번호 검색
             <paper-input-decorator label="BullshITBankDB.isBullshITBank(int number);">
                 <input type="number" id="findnum" onkeypress="searchBullshIT()">
-            </paper-input-decorator><br>
+            </paper-input-decorator>
+            <paper-button raised style="color:white;" onclick="searchBullshITtask()"><core-icon icon="search"></core-icon>번호 검색</paper-button><br>
             
-       <core-icon icon="add-circle"></core-icon>번호 추가
+       
             <paper-input-decorator label="BullshITBankDB.addNewBullshITBank(int number);">
                 <input type="number" id="newnum" onkeypress="addBullshIT()">
             </paper-input-decorator>
+      <paper-button raised style="color:white;" onclick="addBullshITtask()"><core-icon icon="add-circle"></core-icon>번호 추가</paper-button>
         </div>
               <section class="content">
                <paper-shadow z=1 class="card">
         <section id="results">
-            <p>여기에 번호 검색 결과가 나타납니다.</p>
+            <p>여기에 번호 검색 결과가 나타납니다.</p> 
           </section>
         </paper-shadow>
         <paper-shadow z=1 class="card">
