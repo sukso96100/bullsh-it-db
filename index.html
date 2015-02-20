@@ -17,8 +17,10 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <!--        Parse JS SDK-->
         <script src="http://www.parsecdn.com/js/parse-1.3.0.min.js"></script>
+        <script src="js/guid.js"></script>
         <script src="js/initparse.js"></script>
         <script src="js/main.js"></script>
+        <script src="js/detail.js"></script>
         <script type="text/javascript" src="http://l2.io/ip.js?var=userip"></script>
         <script src="js/toast.js"></script>
         
@@ -44,7 +46,7 @@
         <title>BullshITBankDB</title>
         
     </head>
-    <body fullbleed layout vertical>
+    <body fullbleed layout vertical onload="setupGuid()">
           <core-header-panel mode="seamed" flex>
            
   <core-toolbar>       
@@ -52,7 +54,7 @@
            </core-toolbar>
              <section>
   <div align="center" class="main-area">
-       <p>더이상 망할 BullshITBank(Bullshit + ITBank) 의 텔레마케팅에 시달리지 마세요. BullshITBankDB 는 여러분들이 힘을 합쳐 BullshITBank 를 몰아낼 수 있도록 도와드립니다.</p><br>
+       <p>다같이 BullshITBank = null 또는 ITBank = null 이 되도록 힘을 모아봅시다.</p><br>
       <core-icon icon="search"></core-icon>번호 검색
             <paper-input-decorator label="BullshITBankDB.isBullshITBank(int number);">
                 <input type="number" id="findnum" onkeypress="searchBullshIT()">
@@ -66,12 +68,17 @@
               <section class="content">
                <paper-shadow z=1 class="card">
         <section id="results">
+            <p>여기에 번호 검색 결과가 나타납니다.</p>
           </section>
         </paper-shadow>
         <paper-shadow z=1 class="card">
-            <core-collapse>
-                 <section id="details">
-          </section>
+            <core-collapse id="deails-section">
+                <div align="center" >
+                 <paper-fab icon="expand-less" onclick="toggleDetails(false)"></paper-fab>
+                    </div>
+                <h1 id="details-number"></h1>
+                <p id="submitter-guid"></p>
+                <section id="comments"></section>
             </core-collapse>
         </paper-shadow>
               </section>
