@@ -15,7 +15,7 @@ function searchBullshIT(){
                         var object = results[i];
                         var phone = object.get('phone');
                         var submitterip = object.get('submitterguid');
-                        var element = '<paper-item onclick="showDetail('+phone+')">'+phone+'</paper-item>'
+                        var element = '<paper-item id="'+phone+'" onclick="showDetail(this)">'+phone+'</paper-item>'
                         $('#results').append(element);
                     }
               },

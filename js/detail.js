@@ -1,5 +1,6 @@
-function showDetail(number){
-//        console.log(input)
+function showDetail(element){
+        var number = element.id
+        console.log(number)
         var BullshITBankDB = Parse.Object.extend("BullshITBankDB");
         var query = new Parse.Query(BullshITBankDB);
             query.equalTo("phone", number);
@@ -14,7 +15,7 @@ function showDetail(number){
 //                        $('#results').append(element);
                     
                         document.getElementById("details-number").innerHTML = number;
-                        document.getElementById("submitter-guid").innerHTML = results.get("submitter-guid");
+                        document.getElementById("submitter-guid").innerHTML = "등룩한 사람 : " + results.get("submitterguid");
               },
                 error: function(error) {
                     showToast("번호가 없습니다.")
@@ -27,4 +28,10 @@ function showDetail(number){
 function toggleDetails(boolean){
     var area = document.getElementById("deails-section");
     area.opened = boolean;
+}
+
+function updateCount(){
+}
+
+function updateComment(){
 }
