@@ -10,7 +10,7 @@ function showDetail(element){
                     
                         document.getElementById("details-number").innerHTML = number;
                         document.getElementById("submitter-guid").innerHTML = "등룩한 사람 : " + results.get("submitterguid");
-                        document.getElementById("bullshitcount").innerHTML = results.get("bullshitcount").length;
+                        document.getElementById("bullshitcount").label = results.get("bullshitcount").length;
               },
                 error: function(error) {
                     showToast("번호가 없습니다.")
@@ -36,13 +36,21 @@ function updateCount(){
                     toggleDetails(true)
                     
                         var array = results.get("bullshitcount")
+                        if(array == undefined || array == null){
+                            console.log("Bullshitcount is null")
+                            array = new Array();
+                        }
                         var index = array.indexOf(guid);
                         if (index > -1) {
                             array.splice(index, 1);
+                            console.log("bullshitcount minus")
+                            document.getElementById("bullshitbtn").style.background = "black";
                             }else{
                             array.push(guid)
+                            console.log("bullshitcount plus")
+                            document.getElementById("bullshitbtn").style.background = "red";
                             }
-                    document.getElementById("details-number").innerHTML = array.length;
+                    document.getElementById("bullshitcount").label = array.length;
                         results.set("bullshitcount",array)
                         results.save(null, {
                         success: function(userIntroData) {  
