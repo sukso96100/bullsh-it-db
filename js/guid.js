@@ -5,6 +5,7 @@ function setupGuid(){
 if(guid==""||guid == null){
     guid = createGuid();
     setCookie('guid',guid,3650);
+    console.log("Creating New GUID");
     console.log(guid);
 }else{
     console.log(guid)
