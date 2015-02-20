@@ -29,6 +29,7 @@ function toggleDetails(boolean){
 
 function updateCount(){
     document.getElementById("bullshitbtn").style.background = "black";
+    document.getElementById("bullshitcount").label = 0;
     var number = document.getElementById("details-number").innerHTML;
     
     var BullshITBankDB = Parse.Object.extend("BullshITBankDB");
