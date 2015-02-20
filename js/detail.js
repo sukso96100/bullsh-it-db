@@ -28,7 +28,7 @@ function toggleDetails(boolean){
 }
 
 function updateCount(){
-    
+    document.getElementById("bullshitbtn").style.background = "black";
     var number = document.getElementById("details-number").innerHTML;
     
     var BullshITBankDB = Parse.Object.extend("BullshITBankDB");
@@ -39,7 +39,7 @@ function updateCount(){
                     toggleDetails(true)
                     
                         var array = results.get("bullshitcount")
-                        if(array == undefined || array == null){
+                        if(array == null){
                             console.log("Bullshitcount is null")
                             array = new Array();
                         }
