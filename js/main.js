@@ -2,18 +2,22 @@ var userip;
 
 function searchBullshIT(){
     if (event.keyCode == 13){
-        var input = document.getElementById("findnum").value.toString();
+        showToast("찾는 중...")
+        var input = document.getElementById("findnum").value;
         console.log(input)
-    var BullshITBankDB = Parse.Object.extend("BullshITBankDB");
-    var query = new BullshITBankDB();
-            query.equalTo("phone", input);
+        var BullshITBankDB = Parse.Object.extend("BullshITBankDB");
+        var query = new Parse.Query(BullshITBankDB);
+            query.startsWith("phone", input.toString());
             query.find({
-              success: function(results) {
-                for (var i = 0; i < results.length; i++) {
-                  var object = results[i];
-                  var phone = object.get('phone');
-                  
-                }
+                success: function(results) {
+                    showToast(results.length+"개의 번호를 찾음")
+                    for (var i = 0; i < results.length; i++) {
+                        var object = results[i];
+                        var phone = object.get('phone');
+                        var submitterip = object.get('submitterip');
+                        var element = '<paper-item onclick="showDetail("'+phone+'">'+phone+'</paper-item>'
+                        $('#results').append(element);
+                    }
               },
                 error: function(error) {
                     //Data Not Exist
@@ -38,14 +42,14 @@ function addBullshIT(){
         }
 }
 
-function addTestData(){
-    console.log(userip)
-    var BullshITBankDB = Parse.Object.extend("BullshITBankDB");
-    var bullshITBankDB = new BullshITBankDB();
-    bullshITBankDB.save({
-        phone: 01012345678,
-        submitterip: userip
-    }).then(function(object) {
-      alert("yay! it worked");
-    });
-}
+//function addTestData(){
+//    console.log(userip)
+//    var BullshITBankDB = Parse.Object.extend("BullshITBankDB");
+//    var bullshITBankDB = new BullshITBankDB();
+//    bullshITBankDB.save({
+//        phone: 01012345678,
+//        submitterip: userip
+//    }).then(function(object) {
+//      alert("yay! it worked");
+//    });
+//}

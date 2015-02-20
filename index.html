@@ -14,7 +14,7 @@
 <!--        Webcomponets Support-->
             <script src="bower_components/webcomponentsjs/webcomponents.min.js"></script>
 
-        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <!--        Parse JS SDK-->
         <script src="http://www.parsecdn.com/js/parse-1.3.0.min.js"></script>
         <script src="js/initparse.js"></script>
@@ -27,7 +27,6 @@
         <link rel="import" href="bower_components/paper-elements/paper-elements.html">      
 
         
-        <link rel="stylesheet" href="css/common.css">
         <!--       Stylesheet-->
         <link rel="stylesheet" href="css/common.css">
          <!--Legacy Browser Check-->
@@ -46,27 +45,26 @@
         
     </head>
     <body fullbleed layout vertical>
-          <core-header-panel mode="cover" flex>
+          <core-header-panel mode="seamed" flex>
            
-  <core-toolbar class="tall">
+  <core-toolbar>       
       <div>BullshITBankDB</div>
-    
            </core-toolbar>
-              
-  <div align="center" class="content">
-  <paper-shadow z=1 class="card">
-      <p>더이상 망할 BullshITBank(Bullshit + ITBank) 의 텔레마케팅에 시달리지 마세요. BullshITBankDB 는 여러분들이 힘을 합쳐 BullshITBank 를 몰아낼 수 있도록 도와드립니다.</p><br>
-      <core-icon icon="search"></core-icon>번호 조희
+             <section>
+  <div align="center" class="main-area">
+       <p>더이상 망할 BullshITBank(Bullshit + ITBank) 의 텔레마케팅에 시달리지 마세요. BullshITBankDB 는 여러분들이 힘을 합쳐 BullshITBank 를 몰아낼 수 있도록 도와드립니다.</p><br>
+      <core-icon icon="search"></core-icon>번호 검색
             <paper-input-decorator label="BullshITBankDB.isBullshITBank(int number);">
-                <input type="number" id="findnum">
+                <input type="number" id="findnum" onkeypress="searchBullshIT()">
             </paper-input-decorator><br>
             
        <core-icon icon="add-circle"></core-icon>번호 추가
             <paper-input-decorator label="BullshITBankDB.addNewBullshITBank(int number);">
                 <input type="number" id="newnum" onkeypress="addBullshIT()">
             </paper-input-decorator>
-        </paper-shadow><br>
-      <paper-shadow z=1 class="card">
+        </div>
+              <section class="content">
+               <paper-shadow z=1 class="card">
         <section id="results">
           </section>
         </paper-shadow>
@@ -76,8 +74,8 @@
           </section>
             </core-collapse>
         </paper-shadow>
-         
-        </div>
+              </section>
+              </section>
 </core-header-panel>
         <paper-toast id="toast"></paper-toast>
     </body>
