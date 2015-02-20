@@ -1,0 +1,19 @@
+core-toolbar{
+    background: #bc0000;
+    color: white;
+}
+
+.content{
+    padding: 32px;
+}
+
+.main-area{
+    background: #bc0000;
+    padding: 32px;
+    color: white;
+}
+
+.card{
+    background: white;
+    padding: 24px;
+}
