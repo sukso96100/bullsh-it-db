@@ -1,18 +1,3 @@
-
-function searchBullshIT(){
-    if (event.keyCode == 13){
-        searchBullshITtask()
-    }
-}
-
-function addBullshIT(){
-    if (event.keyCode == 13){
-     addBullshITTask()
-        }
-}
-
-
-
 function addBullshITTask(){
       var input = document.getElementById("newnum").value;
         console.log(input)
@@ -51,4 +36,16 @@ function searchBullshITtask(){
 //                     document.getElementById('statemsg').innerHTML = "";
                         }
                     });
+}
+
+function searchBullshIT(){
+    if (event.keyCode == 13){
+        searchBullshITtask()
+    }
+}
+
+function addBullshIT(){
+    if (event.keyCode == 13){
+     addBullshITTask()
+        }
 }
