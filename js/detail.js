@@ -9,7 +9,11 @@ function showDetail(element) {
                         toggleDetails(true)
                         document.getElementById("details-number").innerHTML = number;
                         document.getElementById("submitter-guid").innerHTML = "등룩한 사람 : " + results.get("submitterguid");
-                        document.getElementById("bullshitcount").label = results.get("bullshitcount").length;
+                        if(results.get("bullshitcount") != undefined){
+                        document.getElementById("bullshitcount").innerHTML = results.get("bullshitcount").length;
+                        }else{
+                            document.getElementById("bullshitcount").innerHTML = "0";
+                        }
                         loadComments()
                         setBullshitBtnState()
               },
@@ -24,7 +28,7 @@ function toggleDetails(boolean){
 
 function updateCount(){
     document.getElementById("bullshitbtn").style.background = "black";
-    document.getElementById("bullshitcount").label = 0;
+    document.getElementById("bullshitcount").innerHTML = "0";
     var number = document.getElementById("details-number").innerHTML;
     
     var BullshITBankDB = Parse.Object.extend("BullshITBankDB");
@@ -49,7 +53,7 @@ function updateCount(){
                             console.log("bullshitcount plus")
                             document.getElementById("bullshitbtn").style.background = "red";
                             }
-                    document.getElementById("bullshitcount").label = array.length;
+                    document.getElementById("bullshitcount").innerHTML = array.length;
                         results.set("bullshitcount",array)
                         results.save(null, {
                         success: function(userIntroData) {  
@@ -73,6 +77,7 @@ function updateComments(){
 }
 
 function loadComments(){
+    console.log("loading comments")
  var newcomment = document.getElementById("comment-input").value;
     var number = document.getElementById("details-number").innerHTML;
     var BullshITBankDB = Parse.Object.extend("BullshITBankDB");
@@ -134,7 +139,11 @@ function setBullshitBtnState(){
                             }else{
                             document.getElementById("bullshitbtn").style.background = "black";
                             }
-                    document.getElementById("bullshitcount").label = array.length;
+                    if(array!=undefined){
+                    document.getElementById("bullshitcount").innerHTML = array.length;
+                    }else{
+                        document.getElementById("bullshitcount").innerHTML = "0";
+                    }
                         results.set("bullshitcount",array)
                         results.save(null, {
                         success: function(userIntroData) {  

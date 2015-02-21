@@ -1,14 +1,13 @@
 function addBullshITtask(){
       var input = document.getElementById("newnum").value;
-        console.log(input)
+    if(input.length>=6){
+         console.log(input)
          console.log(guid)
-        var BullshITBankDB = Parse.Object.extend("BullshITBankDB");
-        var bullshITBankDB = new BullshITBankDB();
-        bullshITBankDB.set("phone",input.toString())
-        bullshITBankDB.set("submitterguid",guid)
-        bullshITBankDB.save().then(function(object) {
-            showToast("입력하신 번호가 저장되었습니다. : "+input.toString());
-    });
+       duplicationCheck()
+    }else{
+        showToast("입력하신 번호가 너무 짧습니다. : "+input.toString());
+    }
+        
 }
 
 function searchBullshITtask(){
@@ -48,4 +47,31 @@ function addBullshIT(){
     if (event.keyCode == 13){
      addBullshITTask()
         }
+}
+
+function duplicationCheck(){
+        var input = document.getElementById("newnum").value;
+        var BullshITBankDB = Parse.Object.extend("BullshITBankDB");
+        var query = new Parse.Query(BullshITBankDB);
+            query.equalTo("phone", input.toString());
+            query.first({
+                success: function(results) {
+                    if(results !=undefined){
+                    showToast("이미 저장된 번호입니다.")
+                    }else{
+                        var BullshITBankDB = Parse.Object.extend("BullshITBankDB");
+                        var bullshITBankDB = new BullshITBankDB();
+                        bullshITBankDB.set("phone",input.toString())
+                        bullshITBankDB.set("submitterguid",guid)
+                        bullshITBankDB.save().then(function(object) {
+                        showToast("입력하신 번호가 저장되었습니다. : "+input.toString());
+    });
+                    }
+              },
+                error: function(error) {
+                    showToast("번호가 없습니다.")
+                    //Data Not Exist
+//                     document.getElementById('statemsg').innerHTML = "";
+                        }
+                    });
 }
