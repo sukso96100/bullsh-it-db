@@ -35,6 +35,8 @@
         <link rel="import" href="bower_components/core-collapse/core-collapse.html">
         <link rel="import" href="bower_components/paper-toast/paper-toast.html">
         <link rel="import" href="bower_components/paper-item/paper-item.html">
+        <link rel="import" href="bower_components/paper-dialog/paper-dialog.html">
+        <link rel="import" href="bower_components/paper-icon-button/paper-icon-button.html">
         
         <!--       Stylesheet-->
         <link rel="stylesheet" href="css/common.css">
@@ -57,7 +59,10 @@
           <core-header-panel mode="seamed" flex>
            
   <core-toolbar>       
-      <div>BullshIT-DB</div>
+      <span flex>BullshIT-DB</span>
+      <a href="https://play.google.com/store/apps/details?id=org.bullshitbankdb.android"><paper-icon-button icon="android"></paper-icon-button></a>
+      <a href="https://github.com/sukso96100/bullsh-it-db"><paper-icon-button icon="archive"></paper-icon-button></a>
+      <a href="https://github.com/sukso96100/bullsh-it-db/issues"><paper-icon-button icon="bug-report"></paper-icon-button></a>
            </core-toolbar>
              <section>
   <div align="center" class="main-area">
@@ -102,5 +107,14 @@
               </section>
 </core-header-panel>
         <paper-toast id="toast"></paper-toast>
+        <paper-dialog id="confirm_dialog" heading="등록 내용 확인">
+            <p id="confirm_phone"></p>
+            <p id="confirm_guid"></p>
+            <paper-input-decorator label="간단한 설명을 입력해주세요">
+                <input type="text" id="confirm_comment_input">
+            </paper-input-decorator>
+            <paper-button core-overlay-toggle>취소</paper-button>
+            <paper-button core-overlay-toggle onclick="addNewOneFinally()">확인</paper-button>
+        </paper-dialog>
     </body>
 </html>
