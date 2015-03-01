@@ -5,12 +5,12 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        
+
 <!--        Older IE Support-->
         <!--[if lt IE 9]>
             <script src="bower_components/html5shiv/dist/html5shiv.js"></script>
         <![endif]-->
-        
+
 <!--        Webcomponets Support-->
             <script src="bower_components/webcomponentsjs/webcomponents.min.js"></script>
 
@@ -22,9 +22,9 @@
         <script src="js/main.js"></script>
         <script src="js/detail.js"></script>
         <script src="js/toast.js"></script>
-        
+
 <!--        HTML Imports-->
-        
+
         <link rel="import" href="bower_components/core-header-panel/core-header-panel.html">
         <link rel="import" href="bower_components/core-toolbar/core-toolbar.html">
         <link rel="import" href="bower_components/paper-input/paper-input-decorator.html">
@@ -37,84 +37,90 @@
         <link rel="import" href="bower_components/paper-item/paper-item.html">
         <link rel="import" href="bower_components/paper-dialog/paper-dialog.html">
         <link rel="import" href="bower_components/paper-icon-button/paper-icon-button.html">
-        
-        <!--       Stylesheet-->
+
+        <!-- Stylesheet -->
         <link rel="stylesheet" href="css/common.css">
-         <!--Legacy Browser Check-->
-        <script> 
-        var $buoop = {c:2}; 
-        function $buo_f(){ 
-         var e = document.createElement("script"); 
-         e.src = "//browser-update.org/update.js"; 
+
+        <!-- Legacy Browser Check -->
+        <script>
+        var $buoop = {c:2};
+        function $buo_f(){
+         var e = document.createElement("script");
+         e.src = "//browser-update.org/update.js";
          document.body.appendChild(e);
         };
         try {document.addEventListener("DOMContentLoaded", $buo_f,false)}
         catch(e){window.attachEvent("onload", $buo_f)}
-        </script> 
-<!--        Title-->
+        </script>
+
+       <!-- Title -->
         <title>BullshIT-DB</title>
-        
     </head>
+
     <body fullbleed layout vertical onload="setupGuid()">
           <core-header-panel mode="seamed" flex>
-           
-  <core-toolbar>       
-      <span flex>BullshIT-DB</span>
-      <a href="https://play.google.com/store/apps/details?id=org.bullshitbankdb.android"><paper-icon-button icon="android"></paper-icon-button></a>
-      <a href="https://github.com/sukso96100/bullsh-it-db"><paper-icon-button icon="archive"></paper-icon-button></a>
-      <a href="https://github.com/sukso96100/bullsh-it-db/issues"><paper-icon-button icon="bug-report"></paper-icon-button></a>
+            <core-toolbar>
+              <span flex>BullshIT-DB</span>
+              <a href="https://play.google.com/store/apps/details?id=org.bullshitbankdb.android"><paper-icon-button icon="android"></paper-icon-button></a>
+              <a href="https://github.com/sukso96100/bullsh-it-db"><paper-icon-button icon="archive"></paper-icon-button></a>
+              <a href="https://github.com/sukso96100/bullsh-it-db/issues"><paper-icon-button icon="bug-report"></paper-icon-button></a>
            </core-toolbar>
-             <section>
-  <div align="center" class="main-area">
-       <p>다같이 BullshIT 이 null 이 되도록 힘을 모아봅시다.</p><br>
-            <paper-input-decorator label="BullshITBankDB.isBullshITBank(int number);">
-                <input type="number" id="findnum" onkeypress="searchBullshIT()">
-            </paper-input-decorator>
-            <paper-button raised style="color:white;" onclick="searchBullshITtask()"><core-icon icon="search"></core-icon>번호 검색</paper-button><br>
-            
-       
-            <paper-input-decorator label="BullshITBankDB.addNewBullshITBank(int number);">
-                <input type="number" id="newnum" onkeypress="addBullshIT()">
-            </paper-input-decorator>
-      <paper-button raised style="color:white;" onclick="addBullshITtask()"><core-icon icon="add-circle"></core-icon>번호 추가</paper-button>
-        </div>
-              <section class="content">
-               <paper-shadow z=1 class="card">
-        <section id="results">
-            <p>여기에 번호 검색 결과가 나타납니다.</p> 
-          </section>
-        </paper-shadow>
-        <paper-shadow z=1 class="card">
-            <core-collapse id="deails-section">
+          <section>
+            <div align="center" class="main-area">
+              <p>다같이 BullshIT 이 null 이 되도록 힘을 모아봅시다.</p><br>
+                <paper-input-decorator label="BullshITBankDB.isBullshITBank(int number);">
+                    <input type="number" id="findnum" onkeypress="searchBullshIT()">
+                </paper-input-decorator>
+                <paper-button raised style="color:white;" onclick="searchBullshITtask()">
+                  <core-icon icon="search"></core-icon>번호 검색
+                </paper-button><br>
+                <paper-input-decorator label="BullshITBankDB.addNewBullshITBank(int number);">
+                    <input type="number" id="newnum" onkeypress="addBullshIT()">
+                </paper-input-decorator>
+                <paper-button raised style="color:white;" onclick="addBullshITtask()">
+                  <core-icon icon="add-circle"></core-icon>번호 추가
+                </paper-button>
+              </div>
+            <section class="content">
+            <paper-shadow z=1 class="card">
+              <section id="results">
+                <p>여기에 번호 검색 결과가 나타납니다.</p>
+              </section>
+            </paper-shadow>
+            <paper-shadow z=1 class="card">
+              <core-collapse id="deails-section">
                 <div align="center" >
-                 <paper-fab icon="expand-less" onclick="toggleDetails(false)"></paper-fab>
-                    </div>
+                  <paper-fab icon="expand-less" onclick="toggleDetails(false)"></paper-fab>
+                </div>
                 <h1 id="details-number"></h1>
                 <p id="submitter-guid"></p><br>
-                <paper-button raised style="background: black; color: white;" 
-                              id="bullshitbtn" onclick="updateCount()">isBullshIT()==true</paper-button>
-                    <paper-button raised noink id="bullshitcount">COUNT</paper-button>
-               <br><br>
+                <paper-button raised style="background: black; color: white;"
+                id="bullshitbtn" onclick="updateCount()">isBullshIT()==true</paper-button>
+                <paper-button raised noink id="bullshitcount">COUNT</paper-button>
+                <br>
+                <br>
                 <h3>댓글</h3>
                 <section id="comments"></section>
                 <paper-input-decorator label="댓글 입력">
-                <input type="text" id="comment-input" onkeypress="updateComments()">
-            </paper-input-decorator>
-                <paper-button raised onclick="loadComments()"><core-icon icon="add-circle"></core-icon>댓글 추가</paper-button><br><br>
-            </core-collapse>
-        </paper-shadow>
-              </section>
-              </section>
-</core-header-panel>
-        <paper-toast id="toast"></paper-toast>
-        <paper-dialog id="confirm_dialog" heading="등록 내용 확인">
-            <p id="confirm_phone"></p>
-            <p id="confirm_guid"></p>
-            <paper-input-decorator label="간단한 설명을 입력해주세요">
-                <input type="text" id="confirm_comment_input">
-            </paper-input-decorator>
-            <paper-button core-overlay-toggle>취소</paper-button>
-            <paper-button core-overlay-toggle onclick="addNewOneFinally()">확인</paper-button>
-        </paper-dialog>
+                  <input type="text" id="comment-input" onkeypress="updateComments()">
+                </paper-input-decorator>
+                <paper-button raised onclick="loadComments()">
+                  <core-icon icon="add-circle"></core-icon>댓글 추가
+                </paper-button><br><br>
+              </core-collapse>
+            </paper-shadow>
+          </section>
+        </section>
+      </core-header-panel>
+      <paper-toast id="toast"></paper-toast>
+      <paper-dialog id="confirm_dialog" heading="등록 내용 확인">
+        <p id="confirm_phone"></p>
+        <p id="confirm_guid"></p>
+        <paper-input-decorator label="간단한 설명을 입력해주세요">
+          <input type="text" id="confirm_comment_input">
+        </paper-input-decorator>
+        <paper-button core-overlay-toggle>취소</paper-button>
+        <paper-button core-overlay-toggle onclick="addNewOneFinally()">확인</paper-button>
+      </paper-dialog>
     </body>
 </html>
